@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('marks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->int('student-id');
             $table->float('mark');
             $table->text('description');
+            $table->text('matter');
             $table->date('date');
         });
     }
