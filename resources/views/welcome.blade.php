@@ -9,7 +9,7 @@
 </head>
 
 <body style="margin: 0px">
-    <x-side-bar title="Dashboard" />
+
 </body>
 
 </html>
