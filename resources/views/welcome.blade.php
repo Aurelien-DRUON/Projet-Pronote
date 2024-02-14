@@ -1,3 +1,7 @@
+<?php
+dd(Hash::make('password'));
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
