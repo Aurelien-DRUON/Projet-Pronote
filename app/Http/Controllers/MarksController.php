@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mark;
+use App\Models\User;
+use App\Models\Test;
 use Illuminate\Http\Request;
 
 class MarksController extends Controller
@@ -11,7 +13,7 @@ class MarksController extends Controller
     {
         $mark = new Mark();
         $mark->student_id = auth()->user()->id;
-        $mark->user_id = auth()->user()->id;
+        $mark->test_id;
         $mark->mark = $request->input('mark');
         $mark->description = $request->input('description');
         $mark->date = $request->input('date');
@@ -21,7 +23,13 @@ class MarksController extends Controller
     }
     public function read()
     {
-        $marks = Mark::find(1);
-        return view('marks.read', ['marks' => $marks]);
+        $user = User::find(auth()->user()->id);
+        if ($user->role == "1") {
+            $tests = Test::where('matter', $user->matter)->get();
+            return view('marks.read', ['tests' => $tests]);
+        } else if ($user->role == "2") {
+            $marks = Mark::where('student_id', auth()->user()->id)->get();
+            return view('marks.read', ['marks' => $marks]);
+        }
     }
 }

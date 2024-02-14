@@ -1,5 +1,5 @@
 <?php
-dd(Hash::make('password'));
+dd(Hash::make('titi'));
 ?>
 
 <!DOCTYPE html>

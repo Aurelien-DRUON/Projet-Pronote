@@ -13,7 +13,6 @@ class SideBar extends Component
      */
     public function __construct(public string $title)
     {
-        //
     }
 
     /**
