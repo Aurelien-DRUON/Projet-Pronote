@@ -1,14 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$a = 0;
+foreach ($marks as $mark) {
+    $a += $mark->mark;
+}
+if (count($marks) > 0) {
+    $a = $a / count($marks);
+    $average = 'La moyenne est de ' . $a . '/20';
+} else {
+    $average = 'Pas de notes';
+}
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bonjour</title>
-</head>
+@extends('layouts.layout')
 
-<body>
+@section('content')
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+
+        <button :href="route('logout')"
+            onclick="event.preventDefault();
+                        this.closest('form').submit();">
+            {{ __('Log Out') }}
+        </button>
+    </form>
     <table>
         <tr>
             <th>Id</th>
@@ -24,6 +38,6 @@
                 <td>{{ $mark->date }}</td>
             </tr>
         @endforeach
-</body>
-
-</html>
+    </table>
+    <p>{{ $average }}</p>
+@endsection
