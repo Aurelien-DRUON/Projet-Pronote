@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('marks', function (Blueprint $table) {
             $table->id();
-            $table->integer('student_id');
-            $table->integer('test_id');
+            $table->foreignId('student_id');
+            $table->foreignId('test_id');
             $table->float('mark');
             $table->text('description');
             $table->date('date');

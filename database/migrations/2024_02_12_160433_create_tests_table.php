@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('tests', function (Blueprint $table) {
             $table->id();
             $table->text('matter');
+            $table->text('title');
+            $table->integer('coefficient');
             $table->timestamps();
         });
     }

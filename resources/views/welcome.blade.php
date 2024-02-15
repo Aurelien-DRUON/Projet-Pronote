@@ -1,5 +1,5 @@
 <?php
-dd(Hash::make('titi'));
+dd(Hash::make('toto'));
 ?>
 
 <!DOCTYPE html>

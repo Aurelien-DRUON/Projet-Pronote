@@ -10,6 +10,15 @@
 
 <body style="display:flex; flex-direction: row; margin: 0px;">
     <x-side-bar />
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+
+        <button :href="route('logout')"
+            onclick="event.preventDefault();
+                        this.closest('form').submit();">
+            {{ __('Log Out') }}
+        </button>
+    </form>
     <div>
         @yield('content')
     </div>
