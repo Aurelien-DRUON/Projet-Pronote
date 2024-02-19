@@ -41,7 +41,8 @@
             <table class="w-full text-white bg-blue-500 divide-y divide-blue-600 table-auto">
                 <thead>
                     <tr>
-                        <th>Test</th>
+                        <th>Matière</th>
+                        <th>Contrôle</th>
                         <th>Note</th>
                         <th>Description</th>
                     </tr>
@@ -49,6 +50,7 @@
                 <tbody>
                     @foreach ($marks as $mark)
                         <tr>
+                            <td>{{ $mark->test->matter }}</td>
                             <td>{{ $mark->test->title }}</td>
                             <td>{{ $mark->mark }}/20</td>
                             <td>{{ $mark->description }}</td>
