@@ -1,19 +1,27 @@
-<div style="width: 20%; height: 100%; border: 1px solid black">
-    <div style="width: 100%; height: 80px; background-color:grey; border-bottom: 1px solid black; text-align:center">
+<div class="w-60 h-screen bg-blue-500">
+    <div class="w-full h-1/6 bg-blue-500 text-center hover:bg-blue-600 flex justify-center">
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <p style="margin: 0px; color:white;">{{ $user }}</p>
-            <button :href="route('logout')"
+            <p class="m-0 text-white">{{ $user }}</p>
+            <button class="text-white hover:text-blue-700"
                 onclick="event.preventDefault();
                             this.closest('form').submit();">
                 {{ __('Log Out') }}
             </button>
         </form>
     </div>
-    <div style="width: 100%; height: 80px; background-color:grey; border-bottom: 1px solid black; text-align:center">
-        <a href="{{ route('tests.read') }}">Notes</a>
-    </div>
-    <div style="width: 100%; height: 80px; background-color:grey; border-bottom: 1px solid black; text-align:center">
-        <a href="{{ route('stats.read') }}">Statistiques</a>
-    </div>
+    <a href="{{ route('tests.read') }}" class="text-white hover:text-blue-700">
+        <div class="w-full h-1/6 bg-blue-500 text-center hover:bg-blue-600 flex justify-center items-center">
+            <div class="flex justify-center">
+                Notes
+            </div>
+        </div>
+    </a>
+    <a href="{{ route('stats.read') }}" class="text-white hover:text-blue-700">
+        <div class="w-full h-1/6 bg-blue-500  text-center hover:bg-blue-600 flex justify-center items-center">
+            <div class="flex justify-center">
+                Statistiques
+            </div>
+        </div>
+    </a>
 </div>
