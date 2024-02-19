@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Mark as MailMark;
 use App\Models\Mark;
 use App\Models\User;
 use App\Models\Test;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MarksController extends Controller
 {
@@ -23,10 +25,7 @@ class MarksController extends Controller
         $descriptions = $request->get('descriptions');
 
         foreach ($student_ids as $key => $studentId) {
-            $mark = Mark::where('student_id', $studentId)
-                ->where('test_id', $id->id)
-                ->first();
-
+            $mark = Mark::where('student_id', $studentId)->where('test_id', $id->id)->first();
             if ($mark) {
                 $mark->mark = $marks[$key];
                 $mark->description = $descriptions[$key] ?? null;
@@ -41,6 +40,10 @@ class MarksController extends Controller
                 $newMark->date = date('Y-m-d');
                 $newMark->save();
             }
+            $subject = $id->title;
+            $body = 'Vous avez eu ' . $marks[$key] . ' à l\'épreuve ' . $id->title . '.';
+            $user = User::find($studentId);
+            Mail::to($user->email)->send(new MailMark($subject, $body));
         }
 
         $user = User::find(auth()->user()->id);
