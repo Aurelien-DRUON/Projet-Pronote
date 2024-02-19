@@ -14,5 +14,15 @@
         <a href="{{ route('tests.create') }}">
             <button>Nouveau contrôle</button>
         </a>
+    @elseif ($role == '2')
+        <div style="display: flex; flex-direction: column">
+            @foreach ($marks as $mark)
+                <div style="display: flex; flex-direction: row">
+                    <p>{{ $mark->test->title }}</p>
+                    <p>{{ $mark->mark }}/20</p>
+                    <p>{{ $mark->description }}</p>
+                </div>
+            @endforeach
+        </div>
     @endif
 @endsection

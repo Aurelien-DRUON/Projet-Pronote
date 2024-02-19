@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mark;
 use App\Models\User;
 use App\Models\Test;
 
@@ -15,8 +16,13 @@ class TestsController extends Controller
     public function read()
     {
         $user = User::find(auth()->user()->id);
-        $tests = Test::where('matter', $user->matter)->get();
-        return view('tests.read', ['role' => $user->role, 'tests' => $tests]);
+        if ($user->role == "1") {
+            $tests = Test::where('matter', $user->matter)->get();
+            return view('tests.read', ['role' => $user->role, 'tests' => $tests]);
+        } else if ($user->role == "2") {
+            $marks = Mark::where('student_id', $user->id)->get();
+            return view('tests.read', ['role' => $user->role, 'marks' => $marks]);
+        }
     }
 
     public function store()
