@@ -1,3 +1,14 @@
+<?php
+$average = 0;
+$denominator = 0;
+foreach ($marks as $mark) {
+    $average += $mark->mark * $mark->test->coefficient;
+    $denominator += $mark->test->coefficient;
+}
+$average /= $denominator;
+$average = round($average, 2);
+?>
+
 @extends('layouts.layout')
 
 @section('content')
@@ -23,6 +34,7 @@
                     <p>{{ $mark->description }}</p>
                 </div>
             @endforeach
+            <p>Moyenne : {{ $average }}/20</p>
         </div>
     @endif
 @endsection
