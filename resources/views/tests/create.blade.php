@@ -9,5 +9,5 @@
         <input type="text" name="coefficient" id="coefficient" required>
         <button type="submit">Créer</button>
     </form>
-    <a href="{{ route('tests.read') }}">Back</a>
+    <a href="{{ route('tests.read') }}">Retour</a>
 @endsection
