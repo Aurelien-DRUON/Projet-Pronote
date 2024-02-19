@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MarksController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StatsController;
 use App\Http\Controllers\TestsController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/tests/{id}/marks', [MarksController::class, 'read'])->name('marks.read');
     Route::post('/tests/{id}/marks', [MarksController::class, 'store'])->name('marks.store');
+
+    Route::get('/stats', [StatsController::class, 'read'])->name('stats.read');
 });
 
 require __DIR__ . '/auth.php';
