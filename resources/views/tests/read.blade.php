@@ -5,9 +5,10 @@
         <div>
             @foreach ($tests as $test)
                 <a href="{{ route('marks.read', ['id' => $test->id]) }}">
-                    <div style="display: flex; flex-direction: row">
+                    <div style="display: flex; flex-direction: row; gap:8px">
                         <p>{{ $test->title }}</p>
-                        <p>{{ $test->coefficient }}</p>
+                        <p>Coeff: {{ $test->coefficient }}</p>
+                    </div>
                 </a>
             @endforeach
         </div>
