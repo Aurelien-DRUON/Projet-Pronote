@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('tests.read');
 })->name('index');
 
 Route::middleware('auth')->group(function () {

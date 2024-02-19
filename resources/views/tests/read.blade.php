@@ -1,14 +1,3 @@
-<?php
-$average = 0;
-$denominator = 0;
-foreach ($marks as $mark) {
-    $average += $mark->mark * $mark->test->coefficient;
-    $denominator += $mark->test->coefficient;
-}
-$average /= $denominator;
-$average = round($average, 2);
-?>
-
 @extends('layouts.layout')
 
 @section('content')
@@ -26,6 +15,16 @@ $average = round($average, 2);
             <button>Nouveau contrôle</button>
         </a>
     @elseif ($role == '2')
+        @php
+            $average = 0;
+            $denominator = 0;
+            foreach ($marks as $mark) {
+                $average += $mark->mark * $mark->test->coefficient;
+                $denominator += $mark->test->coefficient;
+            }
+            $average /= $denominator;
+            $average = round($average, 2);
+        @endphp
         <div style="display: flex; flex-direction: column">
             @foreach ($marks as $mark)
                 <div style="display: flex; flex-direction: row">
