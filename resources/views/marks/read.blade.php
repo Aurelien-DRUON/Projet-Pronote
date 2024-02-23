@@ -10,9 +10,9 @@
                 <table class="w-full text-white bg-blue-500 divide-y divide-blue-600 table-auto">
                     <thead>
                         <tr>
-                            <th>Élève</th>
-                            <th>Note</th>
-                            <th>Commentaire</th>
+                            <th class="px-4 py-2">Élève</th>
+                            <th class="px-4 py-2">Note</th>
+                            <th class="px-4 py-2">Commentaire</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -20,7 +20,7 @@
                             @php
                                 $mark = $student->marks->where('test_id', $test->id)->first();
                             @endphp
-                            <tr>
+                            <tr class="bg-blue-700 hover:bg-blue-800">
                                 <td>{{ $student->name }}</td>
                                 <td>
                                     <input type="number" name="marks[{{ $student->id }}]" value="{{ $mark->mark ?? null }}"
